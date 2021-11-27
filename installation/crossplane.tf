@@ -11,5 +11,7 @@ resource "helm_release" "crossplane" {
   repository = "https://charts.crossplane.io/stable"
   chart      = "crossplane"
   version    = "1.5.0"
+  namespace = "crossplane-system"
+  create_namespace =  true
   dependency_update = true
 }
