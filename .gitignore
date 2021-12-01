@@ -3,3 +3,4 @@
 # ignore lockfile for simplicity of this showcase
 .terraform.lock.hcl 
 .DS_Store
+terraform.tfstate*
