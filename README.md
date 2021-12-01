@@ -1,5 +1,7 @@
 # Digital Ocean Kubernetes Challenge
 
+Original Blogpost: [digitalocean.com/community/pages/kubernetes-challenge](https://www.digitalocean.com/community/pages/kubernetes-challenge#anchor--challenges)
+
 ## Project Description
 
 _Deploy a solution for configuring Kubernetes "from the inside"_
@@ -7,12 +9,30 @@ Install Crossplane, which is like Terraform but you manage the infra from inside
 
 ## Documentation
 
-can be found in `docs`
+I wrote about my journey with this challenge [here](docs/journey.md).
+_Maybe this becomes a blogpost eventually._
 
-## ToDos
+In case you want try out what I build, follow the following steps.
 
-- [ ] understand Crossplane
+### How to set up
 
-### Useful Links
+This will create a baseline Kubernetes cluster at DigitalOcean.
+To deploy to your preferred region, add a `-var 'region=<YOUR_REGION>'` to step 3.
 
-<https://github.com/crossplane-contrib/provider-digitalocean>
+1. `cd installation/`
+2. `terraform init`
+3. `TF_VAR_do_token=xyz terraform apply`
+
+After that, follow the documentation in the [Digital Ocean Provider](https://github.com/crossplane-contrib/provider-digitalocean).
+
+I chose the local `go run`, since no official docker image is available at the time of writing.
+
+### How to use
+
+To create your first Droplet via Crossplane run:
+
+```bash
+$ kubectl apply -f https://raw.githubusercontent.com/crossplane-contrib/provider-digitalocean/main/examples/compute/droplet.yaml
+```
+
+_Simple as that!_
